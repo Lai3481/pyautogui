@@ -1,0 +1,18 @@
+cnocr官方文档：https://cnocr.readthedocs.io/zh/latest/
+
+---
+注意：1. python版本要大于3.9  2.所有杀毒软件（360，火绒，电脑管家等等都关掉）
+安装命令：
+
+首先安装离线包
+在本包路径下执行安装命令（在线安装需要c++运行环境编译，离线包已经编译好了）
+（注意这个包ifc网站只有3.9的，我手动改名为3.11，安装成功，使用测试目前没问题）
+pip install Polygon3-3.0.9.1-cp311-cp311-win_amd64.whl
+
+然后安装：
+pip install onnxruntime
+
+最后安装：
+pip install cnocr
+
+安装后第一次运行，库会在线下载需要的模型来调用，很慢且运行可能会失败，第二次运行就好了

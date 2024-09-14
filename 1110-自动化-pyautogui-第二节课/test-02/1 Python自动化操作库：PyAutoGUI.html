@@ -1,0 +1,539 @@
+<!DOCTYPE html><html><head>
+      <title>pyautogui</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      
+      <link rel="stylesheet" href="file:///c:\Users\EDY\.vscode\extensions\shd101wyy.markdown-preview-enhanced-0.8.11\crossnote\dependencies\katex\katex.min.css">
+      
+      
+      
+      
+      
+      <style>
+      code[class*=language-],pre[class*=language-]{color:#333;background:0 0;font-family:Consolas,"Liberation Mono",Menlo,Courier,monospace;text-align:left;white-space:pre;word-spacing:normal;word-break:normal;word-wrap:normal;line-height:1.4;-moz-tab-size:8;-o-tab-size:8;tab-size:8;-webkit-hyphens:none;-moz-hyphens:none;-ms-hyphens:none;hyphens:none}pre[class*=language-]{padding:.8em;overflow:auto;border-radius:3px;background:#f5f5f5}:not(pre)>code[class*=language-]{padding:.1em;border-radius:.3em;white-space:normal;background:#f5f5f5}.token.blockquote,.token.comment{color:#969896}.token.cdata{color:#183691}.token.doctype,.token.macro.property,.token.punctuation,.token.variable{color:#333}.token.builtin,.token.important,.token.keyword,.token.operator,.token.rule{color:#a71d5d}.token.attr-value,.token.regex,.token.string,.token.url{color:#183691}.token.atrule,.token.boolean,.token.code,.token.command,.token.constant,.token.entity,.token.number,.token.property,.token.symbol{color:#0086b3}.token.prolog,.token.selector,.token.tag{color:#63a35c}.token.attr-name,.token.class,.token.class-name,.token.function,.token.id,.token.namespace,.token.pseudo-class,.token.pseudo-element,.token.url-reference .token.variable{color:#795da3}.token.entity{cursor:help}.token.title,.token.title .token.punctuation{font-weight:700;color:#1d3e81}.token.list{color:#ed6a43}.token.inserted{background-color:#eaffea;color:#55a532}.token.deleted{background-color:#ffecec;color:#bd2c00}.token.bold{font-weight:700}.token.italic{font-style:italic}.language-json .token.property{color:#183691}.language-markup .token.tag .token.punctuation{color:#333}.language-css .token.function,code.language-css{color:#0086b3}.language-yaml .token.atrule{color:#63a35c}code.language-yaml{color:#183691}.language-ruby .token.function{color:#333}.language-markdown .token.url{color:#795da3}.language-makefile .token.symbol{color:#795da3}.language-makefile .token.variable{color:#183691}.language-makefile .token.builtin{color:#0086b3}.language-bash .token.keyword{color:#0086b3}pre[data-line]{position:relative;padding:1em 0 1em 3em}pre[data-line] .line-highlight-wrapper{position:absolute;top:0;left:0;background-color:transparent;display:block;width:100%}pre[data-line] .line-highlight{position:absolute;left:0;right:0;padding:inherit 0;margin-top:1em;background:hsla(24,20%,50%,.08);background:linear-gradient(to right,hsla(24,20%,50%,.1) 70%,hsla(24,20%,50%,0));pointer-events:none;line-height:inherit;white-space:pre}pre[data-line] .line-highlight:before,pre[data-line] .line-highlight[data-end]:after{content:attr(data-start);position:absolute;top:.4em;left:.6em;min-width:1em;padding:0 .5em;background-color:hsla(24,20%,50%,.4);color:#f4f1ef;font:bold 65%/1.5 sans-serif;text-align:center;vertical-align:.3em;border-radius:999px;text-shadow:none;box-shadow:0 1px #fff}pre[data-line] .line-highlight[data-end]:after{content:attr(data-end);top:auto;bottom:.4em}html body{font-family:'Helvetica Neue',Helvetica,'Segoe UI',Arial,freesans,sans-serif;font-size:16px;line-height:1.6;color:#333;background-color:#fff;overflow:initial;box-sizing:border-box;word-wrap:break-word}html body>:first-child{margin-top:0}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{line-height:1.2;margin-top:1em;margin-bottom:16px;color:#000}html body h1{font-size:2.25em;font-weight:300;padding-bottom:.3em}html body h2{font-size:1.75em;font-weight:400;padding-bottom:.3em}html body h3{font-size:1.5em;font-weight:500}html body h4{font-size:1.25em;font-weight:600}html body h5{font-size:1.1em;font-weight:600}html body h6{font-size:1em;font-weight:600}html body h1,html body h2,html body h3,html body h4,html body h5{font-weight:600}html body h5{font-size:1em}html body h6{color:#5c5c5c}html body strong{color:#000}html body del{color:#5c5c5c}html body a:not([href]){color:inherit;text-decoration:none}html body a{color:#08c;text-decoration:none}html body a:hover{color:#00a3f5;text-decoration:none}html body img{max-width:100%}html body>p{margin-top:0;margin-bottom:16px;word-wrap:break-word}html body>ol,html body>ul{margin-bottom:16px}html body ol,html body ul{padding-left:2em}html body ol.no-list,html body ul.no-list{padding:0;list-style-type:none}html body ol ol,html body ol ul,html body ul ol,html body ul ul{margin-top:0;margin-bottom:0}html body li{margin-bottom:0}html body li.task-list-item{list-style:none}html body li>p{margin-top:0;margin-bottom:0}html body .task-list-item-checkbox{margin:0 .2em .25em -1.8em;vertical-align:middle}html body .task-list-item-checkbox:hover{cursor:pointer}html body blockquote{margin:16px 0;font-size:inherit;padding:0 15px;color:#5c5c5c;background-color:#f0f0f0;border-left:4px solid #d6d6d6}html body blockquote>:first-child{margin-top:0}html body blockquote>:last-child{margin-bottom:0}html body hr{height:4px;margin:32px 0;background-color:#d6d6d6;border:0 none}html body table{margin:10px 0 15px 0;border-collapse:collapse;border-spacing:0;display:block;width:100%;overflow:auto;word-break:normal;word-break:keep-all}html body table th{font-weight:700;color:#000}html body table td,html body table th{border:1px solid #d6d6d6;padding:6px 13px}html body dl{padding:0}html body dl dt{padding:0;margin-top:16px;font-size:1em;font-style:italic;font-weight:700}html body dl dd{padding:0 16px;margin-bottom:16px}html body code{font-family:Menlo,Monaco,Consolas,'Courier New',monospace;font-size:.85em;color:#000;background-color:#f0f0f0;border-radius:3px;padding:.2em 0}html body code::after,html body code::before{letter-spacing:-.2em;content:'\00a0'}html body pre>code{padding:0;margin:0;word-break:normal;white-space:pre;background:0 0;border:0}html body .highlight{margin-bottom:16px}html body .highlight pre,html body pre{padding:1em;overflow:auto;line-height:1.45;border:#d6d6d6;border-radius:3px}html body .highlight pre{margin-bottom:0;word-break:normal}html body pre code,html body pre tt{display:inline;max-width:initial;padding:0;margin:0;overflow:initial;line-height:inherit;word-wrap:normal;background-color:transparent;border:0}html body pre code:after,html body pre code:before,html body pre tt:after,html body pre tt:before{content:normal}html body blockquote,html body dl,html body ol,html body p,html body pre,html body ul{margin-top:0;margin-bottom:16px}html body kbd{color:#000;border:1px solid #d6d6d6;border-bottom:2px solid #c7c7c7;padding:2px 4px;background-color:#f0f0f0;border-radius:3px}@media print{html body{background-color:#fff}html body h1,html body h2,html body h3,html body h4,html body h5,html body h6{color:#000;page-break-after:avoid}html body blockquote{color:#5c5c5c}html body pre{page-break-inside:avoid}html body table{display:table}html body img{display:block;max-width:100%;max-height:100%}html body code,html body pre{word-wrap:break-word;white-space:pre}}.markdown-preview{width:100%;height:100%;box-sizing:border-box}.markdown-preview ul{list-style:disc}.markdown-preview ul ul{list-style:circle}.markdown-preview ul ul ul{list-style:square}.markdown-preview ol{list-style:decimal}.markdown-preview ol ol,.markdown-preview ul ol{list-style-type:lower-roman}.markdown-preview ol ol ol,.markdown-preview ol ul ol,.markdown-preview ul ol ol,.markdown-preview ul ul ol{list-style-type:lower-alpha}.markdown-preview .newpage,.markdown-preview .pagebreak{page-break-before:always}.markdown-preview pre.line-numbers{position:relative;padding-left:3.8em;counter-reset:linenumber}.markdown-preview pre.line-numbers>code{position:relative}.markdown-preview pre.line-numbers .line-numbers-rows{position:absolute;pointer-events:none;top:1em;font-size:100%;left:0;width:3em;letter-spacing:-1px;border-right:1px solid #999;-webkit-user-select:none;-moz-user-select:none;-ms-user-select:none;user-select:none}.markdown-preview pre.line-numbers .line-numbers-rows>span{pointer-events:none;display:block;counter-increment:linenumber}.markdown-preview pre.line-numbers .line-numbers-rows>span:before{content:counter(linenumber);color:#999;display:block;padding-right:.8em;text-align:right}.markdown-preview .mathjax-exps .MathJax_Display{text-align:center!important}.markdown-preview:not([data-for=preview]) .code-chunk .code-chunk-btn-group{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .status{display:none}.markdown-preview:not([data-for=preview]) .code-chunk .output-div{margin-bottom:16px}.markdown-preview .md-toc{padding:0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link div,.markdown-preview .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}.markdown-preview .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}.scrollbar-style::-webkit-scrollbar{width:8px}.scrollbar-style::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}.scrollbar-style::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode]){position:relative;width:100%;height:100%;top:0;left:0;margin:0;padding:0;overflow:auto}html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{position:relative;top:0;min-height:100vh}@media screen and (min-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em calc(50% - 457px + 2em)}}@media screen and (max-width:914px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode]) .markdown-preview{font-size:14px!important;padding:1em}}@media print{html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{display:none}}html body[for=html-export]:not([data-presentation-mode]) #sidebar-toc-btn{position:fixed;bottom:8px;left:8px;font-size:28px;cursor:pointer;color:inherit;z-index:99;width:32px;text-align:center;opacity:.4}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] #sidebar-toc-btn{opacity:1}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc{position:fixed;top:0;left:0;width:300px;height:100%;padding:32px 0 48px 0;font-size:14px;box-shadow:0 0 4px rgba(150,150,150,.33);box-sizing:border-box;overflow:auto;background-color:inherit}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar{width:8px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-track{border-radius:10px;background-color:transparent}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc::-webkit-scrollbar-thumb{border-radius:5px;background-color:rgba(150,150,150,.66);border:4px solid rgba(150,150,150,.66);background-clip:content-box}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc a{text-decoration:none}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc{padding:0 16px}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link{display:inline;padding:.25rem 0}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link div,html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper .md-toc-link p{display:inline}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .md-sidebar-toc .md-toc .md-toc-link-wrapper.highlighted .md-toc-link{font-weight:800}html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{left:300px;width:calc(100% - 300px);padding:2em calc(50% - 457px - 300px / 2);margin:0;box-sizing:border-box}@media screen and (max-width:1274px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{padding:2em}}@media screen and (max-width:450px){html body[for=html-export]:not([data-presentation-mode])[html-show-sidebar-toc] .markdown-preview{width:100%}}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .markdown-preview{left:50%;transform:translateX(-50%)}html body[for=html-export]:not([data-presentation-mode]):not([html-show-sidebar-toc]) .md-sidebar-toc{display:none}
+/* Please visit the URL below for more information: */
+/*   https://shd101wyy.github.io/markdown-preview-enhanced/#/customize-css */
+
+      </style>
+      <!-- The content below will be included at the end of the <head> element. --><script type="text/javascript">
+  document.addEventListener("DOMContentLoaded", function () {
+    // your code here
+  });
+</script></head><body for="html-export">
+    
+    
+      <div class="crossnote markdown-preview  ">
+      
+<h1 id="python自动化操作库pyautogui">Python自动化操作库：PyAutoGUI </h1>
+<hr>
+
+<div class="md-toc">
+<details style="padding:0;;padding-left:0px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#python自动化操作库pyautogui" class="md-toc-link"><p>Python自动化操作库：PyAutoGUI</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#pyautogui库安装" class="md-toc-link">
+            <p>PyAutoGUI库安装</p>
+
+          </a></div><details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#基础使用" class="md-toc-link"><p>基础使用</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#故障保护" class="md-toc-link">
+            <p>故障保护</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#载入pyautogui库" class="md-toc-link">
+            <p>载入PyAutoGUI库</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#获取屏幕分辨率" class="md-toc-link">
+            <p>获取屏幕分辨率</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#获取当前鼠标位置坐标值" class="md-toc-link">
+            <p>获取当前鼠标位置坐标值</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#检查指定坐标是否在屏幕内" class="md-toc-link">
+            <p>检查指定坐标是否在屏幕内</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#程序暂停" class="md-toc-link">
+            <p>程序暂停</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#鼠标操作" class="md-toc-link"><p>鼠标操作</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#鼠标移动" class="md-toc-link">
+            <p>鼠标移动</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#鼠标拖拽" class="md-toc-link">
+            <p>鼠标拖拽</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#鼠标点击" class="md-toc-link">
+            <p>鼠标点击</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#鼠标滚动" class="md-toc-link">
+            <p>鼠标滚动：</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#键盘操作" class="md-toc-link"><p>键盘操作</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#输入字符" class="md-toc-link">
+            <p>输入字符</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#按键" class="md-toc-link">
+            <p>按键</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#热键组合快捷键" class="md-toc-link">
+            <p>热键(组合快捷键)</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#消息框" class="md-toc-link"><p>消息框</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#alert" class="md-toc-link">
+            <p>alert()</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#confirm" class="md-toc-link">
+            <p>confirm()</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#prompt" class="md-toc-link">
+            <p>prompt()</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#password" class="md-toc-link">
+            <p>password()</p>
+
+          </a></div>
+        </div>
+      </details>
+    <details style="padding:0;;padding-left:24px;" open="">
+        <summary class="md-toc-link-wrapper">
+          <a href="#屏幕截图定位" class="md-toc-link"><p>屏幕截图定位</p>
+</a>
+          </summary>
+        <div>
+          <div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#屏幕截图" class="md-toc-link">
+            <p>屏幕截图</p>
+
+          </a></div><div class="md-toc-link-wrapper" style="padding:0;;display:list-item;list-style:square;margin-left:42px">
+          <a href="#图像定位" class="md-toc-link">
+            <p>图像定位</p>
+
+          </a></div>
+        </div>
+      </details>
+    
+        </div>
+      </details>
+    
+</div>
+<hr>
+<p><strong>PyAutoGUI是一个Python自动化操作库</strong></p>
+<p>官方文档：<a href="https://pyautogui.readthedocs.io/en/latest/index.html">https://pyautogui.readthedocs.io/en/latest/index.html</a></p>
+<pre class="language-text">PyAutoGUI通过Python编程，模拟人在电脑上的常用操作（鼠标点击、键盘输入、图像识别和定位等），
+配合 Pyperclip（复制粘贴中文文本），CnOCR（图像识别文本）等Python库，
+实现各种重复性电脑工作的自动化完成。
+如：软件自动操作、日常办公、数据抓取、游戏辅助等。
+</pre>
+<hr>
+<p><strong>PyAutoGUI的四大功能</strong></p>
+<ol>
+<li>鼠标操作</li>
+<li>键盘操作</li>
+<li>消息框</li>
+<li>屏幕截图和定位</li>
+</ol>
+<hr>
+<p><strong>PyAutoGUI的优缺点</strong></p>
+<p>优点</p>
+<ul>
+<li>普适性强：
+<ul>
+<li>由于绝大多数电脑任务都是由人使用键盘鼠标和屏幕图像识别来完成的</li>
+<li>理论上只要我们学会这一个库，绝大多数电脑任务都可以改由PyAutoGUI自动化完成</li>
+</ul>
+</li>
+<li>跨平台支持：可在Windows、Mac和Linux系统上使用，提供跨平台的界面操作自动化解决方案</li>
+<li>支持鼠标键盘操作：可通过代码控制键盘输入、鼠标移动、拖拽、点击等操作</li>
+<li>支持截屏和定位：提供全屏和区域截屏功能，并可定位目标图片在屏幕上的位置</li>
+</ul>
+<p>缺点</p>
+<ul>
+<li>运行速度较慢
+<ul>
+<li>进行各种鼠标键盘操作时，被操作的软件反应有延迟，所以需要程序停顿等待</li>
+<li>截图或图像定位也有延迟</li>
+<li>所以本库在需要高速运行和反应的应用场景（如海量数据抓取、大型游戏操作等）使用有困难</li>
+</ul>
+</li>
+<li>操作流程较为繁琐复杂
+<ul>
+<li>由于PyAutoGUI进行的是最基础通用的鼠标键盘和图像操作，相对特定领域的专业软件和技术，编写自动化项目流程较为繁琐。</li>
+</ul>
+</li>
+<li>不支持中文文本的复制粘贴（我们使用Pyperclip库实现）</li>
+<li>不支持图像文字识别：无法直接对截屏图片进行OCR文字识别（我们使用CnOCR库实现）</li>
+</ul>
+<hr>
+<h2 id="pyautogui库安装">PyAutoGUI库安装 </h2>
+<pre data-role="codeBlock" data-info="" class="language-text text"><code>pip install pyautogui==0.9.54
+pip install opencv-python==4.6.0.66
+</code></pre><p>运行示例：在Windows画图软件上绘制一个方形螺旋线</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> pyautogui
+
+<span class="token comment"># 示例---画一个方形螺旋线</span>
+distance <span class="token operator">=</span> <span class="token number">200</span>
+<span class="token keyword keyword-while">while</span> distance <span class="token operator">&gt;</span> <span class="token number">0</span><span class="token punctuation">:</span>
+        pyautogui<span class="token punctuation">.</span>drag<span class="token punctuation">(</span>distance<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+        distance <span class="token operator">-=</span> <span class="token number">5</span>
+        pyautogui<span class="token punctuation">.</span>drag<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> distance<span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+        pyautogui<span class="token punctuation">.</span>drag<span class="token punctuation">(</span><span class="token operator">-</span>distance<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+        distance <span class="token operator">-=</span> <span class="token number">5</span>
+        pyautogui<span class="token punctuation">.</span>drag<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token operator">-</span>distance<span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span> 
+</code></pre><hr>
+<h2 id="基础使用">基础使用 </h2>
+<hr>
+<h3 id="故障保护">故障保护 </h3>
+<p>PyAutoGUI程序一旦开始运行，电脑的鼠标、键盘就会被程序控制，人无法手动操作。如果程序失控人无法及时关闭程序。<br>
+为防止这种情况发生，在需要关闭程序时可以手动终止程序，PyAutoGUI提供了一个故障保护功能。</p>
+<p>当PyAutoGUI程序运行时，<br>
+<strong>用户手动将鼠标快速甩到主监视器（程序应用的电脑屏幕）四个角的任何一处（一般是左上角）</strong>，<br>
+将触发故障保护功能，中断程序运行。</p>
+<pre class="language-text">可以通过修改参数：pyautogui.FAILSAFE = False
+关闭故障保护，强烈建议不要关闭
+</pre>
+<h3 id="载入pyautogui库">载入PyAutoGUI库 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token keyword keyword-import">import</span> pyautogui
+<span class="token comment"># import pyautogui as pg  # 别名</span>
+
+<span class="token comment"># 设置程序所有鼠标键盘操作每步之间停顿的秒数</span>
+<span class="token comment"># 如不设置，默认值为0.1，即每步操作默认停顿0.1秒</span>
+<span class="token comment"># 如设置高了程序所有鼠标键盘操作步骤之间的停顿会延长</span>
+<span class="token comment"># pyautogui.PAUSE = 0.1</span>
+</code></pre><h3 id="获取屏幕分辨率">获取屏幕分辨率 </h3>
+<pre class="language-text">在PyAutoGUI中，
+坐标轴的原点是屏幕屏幕左上角，
+向右是x轴，越来越大，
+向下是y轴，越来越大
+</pre>
+<p><img src="images/screen.png" alt="屏幕"></p>
+<p>注意：如果你有多个屏幕，PyAutoGUI默认只会操作你的主屏幕</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 屏幕分辨率（屏幕宽高的像素值（整数））</span>
+size <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>size<span class="token punctuation">)</span>
+<span class="token comment"># size(width=1920, height=1080)</span>
+
+<span class="token comment"># 单独调用屏幕宽度或高度</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>size<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> size<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+</code></pre><p>课件后续代码的变量赋值和print打印省略</p>
+<h3 id="获取当前鼠标位置坐标值">获取当前鼠标位置坐标值 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 鼠标当前位置的X、Y坐标值</span>
+pyautogui<span class="token punctuation">.</span>position<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token comment"># Point(x=123, y=456)</span>
+</code></pre><hr>
+<h3 id="检查指定坐标是否在屏幕内">检查指定坐标是否在屏幕内 </h3>
+<ul>
+<li>坐标值在主屏范围内，返回<code>True</code></li>
+<li>坐标值在主屏范围外，返回<code>False</code></li>
+<li>坐标值正好在主屏边缘，返回<code>False</code></li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>pyautogui<span class="token punctuation">.</span>onScreen<span class="token punctuation">(</span><span class="token number">1920</span><span class="token punctuation">,</span><span class="token number">1080</span><span class="token punctuation">)</span>  <span class="token comment"># 主屏边缘</span>
+<span class="token comment"># False</span>
+<span class="token comment"># 坐标值可以是两个整数、含有两个整数的列表或元组</span>
+pyautogui<span class="token punctuation">.</span>onScreen<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token number">1919</span><span class="token punctuation">,</span><span class="token number">1079</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token comment"># True</span>
+</code></pre><hr>
+<h3 id="程序暂停">程序暂停 </h3>
+<p>由于鼠标键盘操作软件后，软件反应和完成操作需要一定时间，<br>
+此时程序应该暂停等待软件完成操作后，才能继续下一步操作</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 方式1：全局设置</span>
+<span class="token comment"># 程序最上方设置，程序所有鼠标键盘操作步骤之间统一停顿的秒数，默认值0.1秒</span>
+pyautogui<span class="token punctuation">.</span>PAUSE <span class="token operator">=</span> <span class="token number">1</span> 
+
+<span class="token comment"># 方式2：单个操作暂停</span>
+<span class="token keyword keyword-import">import</span> time
+
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token number">111</span><span class="token punctuation">)</span>
+time<span class="token punctuation">.</span>sleep<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span>  <span class="token comment"># 程序暂停2秒</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token number">222</span><span class="token punctuation">)</span>
+</code></pre><hr>
+<h2 id="鼠标操作">鼠标操作 </h2>
+<hr>
+<h3 id="鼠标移动">鼠标移动 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 绝对位置移动，移动到指定坐标</span>
+<span class="token comment"># 常用参数：</span>
+<span class="token comment">#   x: int,x轴坐标（None即当前鼠标坐标）</span>
+<span class="token comment">#   y: int,y轴坐标</span>
+<span class="token comment">#   duration: float,移动时间（单位为秒，默认为0）</span>
+pyautogui<span class="token punctuation">.</span>moveTo<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>  <span class="token comment"># 移动至：x轴坐标100px，y轴坐标保持当前，耗时1秒</span>
+pyautogui<span class="token punctuation">.</span>moveTo<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">100</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token boolean">None</span><span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">1</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 相对位置移动，相对现在鼠标位置向右（x轴）、向下（y轴）移动</span>
+<span class="token comment"># 反向移动用负数坐标即可</span>
+pyautogui<span class="token punctuation">.</span>move<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">0.5</span><span class="token punctuation">)</span>  <span class="token comment"># 当前鼠标位置x轴保持不动，y轴向下移动200px，耗时0.5秒</span>
+
+
+<span class="token comment"># 练习：鼠标移动到屏幕中心</span>
+size <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>size<span class="token punctuation">(</span><span class="token punctuation">)</span>
+pyautogui<span class="token punctuation">.</span>moveTo<span class="token punctuation">(</span>size<span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> size<span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">/</span><span class="token number">2</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span>
+</code></pre><h3 id="鼠标拖拽">鼠标拖拽 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 绝对位置拖动：鼠标从当前位置拖动到指定坐标位置</span>
+<span class="token comment"># 常用参数：</span>
+<span class="token comment">#   x: int,x轴坐标（None即当前鼠标坐标）</span>
+<span class="token comment">#   y: int,y轴坐标</span>
+<span class="token comment">#   duration: float,移动时间（单位为秒，默认为0）</span>
+<span class="token comment">#   button: str,左键'left',中键'middle',右键'right'</span>
+pyautogui<span class="token punctuation">.</span>dragTo<span class="token punctuation">(</span><span class="token boolean">None</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> button<span class="token operator">=</span><span class="token string">'left'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 相对位置拖动：相对当前鼠标位置向右向下拖动指定下像素</span>
+pyautogui<span class="token punctuation">.</span>drag<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> button<span class="token operator">=</span><span class="token string">'left'</span><span class="token punctuation">)</span>
+</code></pre><h3 id="鼠标点击">鼠标点击 </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 鼠标单击</span>
+pyautogui<span class="token punctuation">.</span>click<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 常用参数：</span>
+<span class="token comment">#   x: int,x轴坐标（先移动到目标坐标再单击）</span>
+<span class="token comment">#   y: int,y轴坐标</span>
+<span class="token comment">#   clicks: int,单击几次（默认1次）</span>
+<span class="token comment">#   interval: float,单击之间的暂停秒数（默认0）</span>
+<span class="token comment">#   button: str,左键'left',中键'middle',右键'right'</span>
+<span class="token comment">#   duration: float,鼠标移动到目标坐标的秒数</span>
+pyautogui<span class="token punctuation">.</span>click<span class="token punctuation">(</span>x<span class="token operator">=</span><span class="token number">300</span><span class="token punctuation">,</span> y<span class="token operator">=</span><span class="token number">200</span><span class="token punctuation">,</span> clicks<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> interval<span class="token operator">=</span><span class="token number">0.2</span><span class="token punctuation">,</span> button<span class="token operator">=</span><span class="token string">'right'</span><span class="token punctuation">,</span> duration<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 复合操作</span>
+<span class="token comment"># 双击左键</span>
+pyautogui<span class="token punctuation">.</span>doubleClick<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span>
+<span class="token comment"># 双击右键</span>
+pyautogui<span class="token punctuation">.</span>rightClick<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">)</span> 
+
+<span class="token comment"># 单步操作</span>
+<span class="token comment"># 鼠标按下</span>
+pyautogui<span class="token punctuation">.</span>mouseDown<span class="token punctuation">(</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> button<span class="token operator">=</span><span class="token string">'right'</span><span class="token punctuation">)</span>  
+<span class="token comment"># 鼠标释放</span>
+pyautogui<span class="token punctuation">.</span>mouseUp<span class="token punctuation">(</span>button<span class="token operator">=</span><span class="token string">'right'</span><span class="token punctuation">)</span>
+</code></pre><h3 id="鼠标滚动">鼠标滚动： </h3>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 垂直滚动,值为正整数向上滚动</span>
+<span class="token comment"># 用单击模拟滚动,所以在在不同系统或软件内滚动的效果可能不一样</span>
+pyautogui<span class="token punctuation">.</span>scroll<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1000</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 如上面代码无效,试试下面的</span>
+<span class="token comment"># 向下滚动100px</span>
+<span class="token keyword keyword-for">for</span> i <span class="token keyword keyword-in">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">5</span><span class="token punctuation">)</span><span class="token punctuation">:</span>  
+    pyautogui<span class="token punctuation">.</span>scroll<span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">100</span><span class="token punctuation">)</span>
+</code></pre><hr>
+<h2 id="键盘操作">键盘操作 </h2>
+<hr>
+<h3 id="输入字符">输入字符 </h3>
+<ul>
+<li>不支持输入中文(后面结合<strong>Pyperclip</strong>库输入中文)</li>
+<li>只能输入字符,不能执行<code>Shift</code>/<code>F1</code>之类的按键</li>
+<li>输入框光标聚焦时才能输入(可以先单击一下再输入)</li>
+</ul>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 输入字符</span>
+<span class="token comment"># 常用参数</span>
+<span class="token comment">#   message: str,要输入的字符</span>
+<span class="token comment">#   interval: float,单个字符之间的间隔秒数</span>
+pyautogui<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token string">'Hello world!'</span><span class="token punctuation">,</span> interval<span class="token operator">=</span><span class="token number">0.25</span><span class="token punctuation">)</span>
+</code></pre><h3 id="按键">按键 </h3>
+<p>不仅能按单个字符,还能按各种非字符按键</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 常用参数:</span>
+<span class="token comment">#   keys: str | [str],执行按键</span>
+<span class="token comment">#   presses: int,执行次数</span>
+<span class="token comment">#   interval: float,每次执行按键的间隔秒数</span>
+pyautogui<span class="token punctuation">.</span>press<span class="token punctuation">(</span><span class="token punctuation">[</span><span class="token string">'1'</span><span class="token punctuation">,</span><span class="token string">'2'</span><span class="token punctuation">,</span><span class="token string">'a'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+pyautogui<span class="token punctuation">.</span>press<span class="token punctuation">(</span><span class="token string">'enter'</span><span class="token punctuation">,</span> presses<span class="token operator">=</span><span class="token number">2</span><span class="token punctuation">,</span> interval<span class="token operator">=</span><span class="token number">0.5</span><span class="token punctuation">)</span>
+</code></pre><pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 所有按键的字符串标识如下</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>pyautogui<span class="token punctuation">.</span>KEYBOARD_KEYS<span class="token punctuation">)</span>
+<span class="token comment"># 输出:</span>
+<span class="token punctuation">[</span>
+<span class="token string">'\t'</span><span class="token punctuation">,</span> <span class="token string">'\n'</span><span class="token punctuation">,</span> <span class="token string">'\r'</span><span class="token punctuation">,</span> <span class="token string">' '</span><span class="token punctuation">,</span> <span class="token string">'!'</span><span class="token punctuation">,</span> <span class="token string">'"'</span><span class="token punctuation">,</span> <span class="token string">'#'</span><span class="token punctuation">,</span> <span class="token string">'$'</span><span class="token punctuation">,</span> <span class="token string">'%'</span><span class="token punctuation">,</span> <span class="token string">'&amp;'</span><span class="token punctuation">,</span> <span class="token string">"'"</span><span class="token punctuation">,</span> <span class="token string">'('</span><span class="token punctuation">,</span> <span class="token string">')'</span><span class="token punctuation">,</span> <span class="token string">'*'</span><span class="token punctuation">,</span> <span class="token string">'+'</span><span class="token punctuation">,</span> <span class="token string">','</span><span class="token punctuation">,</span> <span class="token string">'-'</span><span class="token punctuation">,</span> <span class="token string">'.'</span><span class="token punctuation">,</span> <span class="token string">'/'</span><span class="token punctuation">,</span> <span class="token string">'0'</span><span class="token punctuation">,</span> <span class="token string">'1'</span><span class="token punctuation">,</span> <span class="token string">'2'</span><span class="token punctuation">,</span> <span class="token string">'3'</span><span class="token punctuation">,</span> <span class="token string">'4'</span><span class="token punctuation">,</span> <span class="token string">'5'</span><span class="token punctuation">,</span> <span class="token string">'6'</span><span class="token punctuation">,</span> <span class="token string">'7'</span><span class="token punctuation">,</span> <span class="token string">'8'</span><span class="token punctuation">,</span> <span class="token string">'9'</span><span class="token punctuation">,</span> <span class="token string">':'</span><span class="token punctuation">,</span> <span class="token string">';'</span><span class="token punctuation">,</span> <span class="token string">'&lt;'</span><span class="token punctuation">,</span> <span class="token string">'='</span><span class="token punctuation">,</span> <span class="token string">'&gt;'</span><span class="token punctuation">,</span> <span class="token string">'?'</span><span class="token punctuation">,</span> <span class="token string">'@'</span><span class="token punctuation">,</span> <span class="token string">'['</span><span class="token punctuation">,</span> <span class="token string">'\\'</span><span class="token punctuation">,</span> <span class="token string">']'</span><span class="token punctuation">,</span> <span class="token string">'^'</span><span class="token punctuation">,</span> <span class="token string">'_'</span><span class="token punctuation">,</span> <span class="token string">'`'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">,</span> <span class="token string">'b'</span><span class="token punctuation">,</span> <span class="token string">'c'</span><span class="token punctuation">,</span> <span class="token string">'d'</span><span class="token punctuation">,</span> <span class="token string">'e'</span><span class="token punctuation">,</span> <span class="token string">'f'</span><span class="token punctuation">,</span> <span class="token string">'g'</span><span class="token punctuation">,</span> <span class="token string">'h'</span><span class="token punctuation">,</span> <span class="token string">'i'</span><span class="token punctuation">,</span> <span class="token string">'j'</span><span class="token punctuation">,</span> <span class="token string">'k'</span><span class="token punctuation">,</span> <span class="token string">'l'</span><span class="token punctuation">,</span> <span class="token string">'m'</span><span class="token punctuation">,</span> 
+<span class="token string">'n'</span><span class="token punctuation">,</span> <span class="token string">'o'</span><span class="token punctuation">,</span> <span class="token string">'p'</span><span class="token punctuation">,</span> <span class="token string">'q'</span><span class="token punctuation">,</span> <span class="token string">'r'</span><span class="token punctuation">,</span> <span class="token string">'s'</span><span class="token punctuation">,</span> <span class="token string">'t'</span><span class="token punctuation">,</span> <span class="token string">'u'</span><span class="token punctuation">,</span> <span class="token string">'v'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">,</span> <span class="token string">'x'</span><span class="token punctuation">,</span> <span class="token string">'y'</span><span class="token punctuation">,</span> <span class="token string">'z'</span><span class="token punctuation">,</span> <span class="token string">'{'</span><span class="token punctuation">,</span> <span class="token string">'|'</span><span class="token punctuation">,</span> <span class="token string">'}'</span><span class="token punctuation">,</span> <span class="token string">'~'</span><span class="token punctuation">,</span> <span class="token string">'accept'</span><span class="token punctuation">,</span> <span class="token string">'add'</span><span class="token punctuation">,</span> <span class="token string">'alt'</span><span class="token punctuation">,</span> <span class="token string">'altleft'</span><span class="token punctuation">,</span> <span class="token string">'altright'</span><span class="token punctuation">,</span> <span class="token string">'apps'</span><span class="token punctuation">,</span> 
+<span class="token string">'backspace'</span><span class="token punctuation">,</span> <span class="token string">'browserback'</span><span class="token punctuation">,</span> <span class="token string">'browserfavorites'</span><span class="token punctuation">,</span> <span class="token string">'browserforward'</span><span class="token punctuation">,</span> <span class="token string">'browserhome'</span><span class="token punctuation">,</span> <span class="token string">'browserrefresh'</span><span class="token punctuation">,</span> <span class="token string">'browsersearch'</span><span class="token punctuation">,</span> <span class="token string">'browserstop'</span><span class="token punctuation">,</span> <span class="token string">'capslock'</span><span class="token punctuation">,</span> <span class="token string">'clear'</span><span class="token punctuation">,</span> <span class="token string">'convert'</span><span class="token punctuation">,</span> <span class="token string">'ctrl'</span><span class="token punctuation">,</span> <span class="token string">'ctrlleft'</span><span class="token punctuation">,</span> <span class="token string">'ctrlright'</span><span class="token punctuation">,</span> <span class="token string">'decimal'</span><span class="token punctuation">,</span> <span class="token string">'del'</span><span class="token punctuation">,</span> <span class="token string">'delete'</span><span class="token punctuation">,</span> <span class="token string">'divide'</span><span class="token punctuation">,</span> <span class="token string">'down'</span><span class="token punctuation">,</span> <span class="token string">'end'</span><span class="token punctuation">,</span> <span class="token string">'enter'</span><span class="token punctuation">,</span> <span class="token string">'esc'</span><span class="token punctuation">,</span> <span class="token string">'escape'</span><span class="token punctuation">,</span> <span class="token string">'execute'</span><span class="token punctuation">,</span> <span class="token string">'f1'</span><span class="token punctuation">,</span> <span class="token string">'f10'</span><span class="token punctuation">,</span> <span class="token string">'f11'</span><span class="token punctuation">,</span> <span class="token string">'f12'</span><span class="token punctuation">,</span> <span class="token string">'f13'</span><span class="token punctuation">,</span> <span class="token string">'f14'</span><span class="token punctuation">,</span> <span class="token string">'f15'</span><span class="token punctuation">,</span> <span class="token string">'f16'</span><span class="token punctuation">,</span> <span class="token string">'f17'</span><span class="token punctuation">,</span> <span class="token string">'f18'</span><span class="token punctuation">,</span> <span class="token string">'f19'</span><span class="token punctuation">,</span> <span class="token string">'f2'</span><span class="token punctuation">,</span> <span class="token string">'f20'</span><span class="token punctuation">,</span> <span class="token string">'f21'</span><span class="token punctuation">,</span> <span class="token string">'f22'</span><span class="token punctuation">,</span> <span class="token string">'f23'</span><span class="token punctuation">,</span> <span class="token string">'f24'</span><span class="token punctuation">,</span> <span class="token string">'f3'</span><span class="token punctuation">,</span> <span class="token string">'f4'</span><span class="token punctuation">,</span> <span class="token string">'f5'</span><span class="token punctuation">,</span> <span class="token string">'f6'</span><span class="token punctuation">,</span> <span class="token string">'f7'</span><span class="token punctuation">,</span> <span class="token string">'f8'</span><span class="token punctuation">,</span> <span class="token string">'f9'</span><span class="token punctuation">,</span> <span class="token string">'final'</span><span class="token punctuation">,</span> <span class="token string">'fn'</span><span class="token punctuation">,</span> <span class="token string">'hanguel'</span><span class="token punctuation">,</span> <span class="token string">'hangul'</span><span class="token punctuation">,</span> <span class="token string">'hanja'</span><span class="token punctuation">,</span> <span class="token string">'help'</span><span class="token punctuation">,</span> <span class="token string">'home'</span><span class="token punctuation">,</span> <span class="token string">'insert'</span><span class="token punctuation">,</span> <span class="token string">'junja'</span><span class="token punctuation">,</span> <span class="token string">'kana'</span><span class="token punctuation">,</span> <span class="token string">'kanji'</span><span class="token punctuation">,</span> <span class="token string">'launchapp1'</span><span class="token punctuation">,</span> <span class="token string">'launchapp2'</span><span class="token punctuation">,</span> <span class="token string">'launchmail'</span><span class="token punctuation">,</span> <span class="token string">'launchmediaselect'</span><span class="token punctuation">,</span> <span class="token string">'left'</span><span class="token punctuation">,</span> <span class="token string">'modechange'</span><span class="token punctuation">,</span> <span class="token string">'multiply'</span><span class="token punctuation">,</span> <span class="token string">'nexttrack'</span><span class="token punctuation">,</span> <span class="token string">'nonconvert'</span><span class="token punctuation">,</span> <span class="token string">'num0'</span><span class="token punctuation">,</span> <span class="token string">'num1'</span><span class="token punctuation">,</span> <span class="token string">'num2'</span><span class="token punctuation">,</span> <span class="token string">'num3'</span><span class="token punctuation">,</span> <span class="token string">'num4'</span><span class="token punctuation">,</span> <span class="token string">'num5'</span><span class="token punctuation">,</span> <span class="token string">'num6'</span><span class="token punctuation">,</span> <span class="token string">'num7'</span><span class="token punctuation">,</span> <span class="token string">'num8'</span><span class="token punctuation">,</span> <span class="token string">'num9'</span><span class="token punctuation">,</span> <span class="token string">'numlock'</span><span class="token punctuation">,</span> <span class="token string">'pagedown'</span><span class="token punctuation">,</span> <span class="token string">'pageup'</span><span class="token punctuation">,</span> <span class="token string">'pause'</span><span class="token punctuation">,</span> <span class="token string">'pgdn'</span><span class="token punctuation">,</span> <span class="token string">'pgup'</span><span class="token punctuation">,</span> <span class="token string">'playpause'</span><span class="token punctuation">,</span> <span class="token string">'prevtrack'</span><span class="token punctuation">,</span> <span class="token string">'print'</span><span class="token punctuation">,</span> <span class="token string">'printscreen'</span><span class="token punctuation">,</span> <span class="token string">'prntscrn'</span><span class="token punctuation">,</span> <span class="token string">'prtsc'</span><span class="token punctuation">,</span> <span class="token string">'prtscr'</span><span class="token punctuation">,</span> <span class="token string">'return'</span><span class="token punctuation">,</span> <span class="token string">'right'</span><span class="token punctuation">,</span> <span class="token string">'scrolllock'</span><span class="token punctuation">,</span> <span class="token string">'select'</span><span class="token punctuation">,</span> <span class="token string">'separator'</span><span class="token punctuation">,</span> <span class="token string">'shift'</span><span class="token punctuation">,</span> <span class="token string">'shiftleft'</span><span class="token punctuation">,</span> <span class="token string">'shiftright'</span><span class="token punctuation">,</span> <span class="token string">'sleep'</span><span class="token punctuation">,</span> <span class="token string">'space'</span><span class="token punctuation">,</span> <span class="token string">'stop'</span><span class="token punctuation">,</span> <span class="token string">'subtract'</span><span class="token punctuation">,</span> <span class="token string">'tab'</span><span class="token punctuation">,</span> <span class="token string">'up'</span><span class="token punctuation">,</span> <span class="token string">'volumedown'</span><span class="token punctuation">,</span> <span class="token string">'volumemute'</span><span class="token punctuation">,</span> <span class="token string">'volumeup'</span><span class="token punctuation">,</span> <span class="token string">'win'</span><span class="token punctuation">,</span> <span class="token string">'winleft'</span><span class="token punctuation">,</span> <span class="token string">'winright'</span><span class="token punctuation">,</span> <span class="token string">'yen'</span><span class="token punctuation">,</span> <span class="token string">'command'</span><span class="token punctuation">,</span> <span class="token string">'option'</span><span class="token punctuation">,</span> <span class="token string">'optionleft'</span><span class="token punctuation">,</span> <span class="token string">'optionright'</span>
+<span class="token punctuation">]</span>
+</code></pre><pre data-role="codeBlock" data-info="" class="language-text text"><code>+ 'Add' - 加号键（"+"）通常用于添加或增加操作。
++ 'Alt' - 通常与键盘上的 "Alt" 键相对应，它是一种常用的快捷键，可以用于访问特殊功能或菜单。
++ 'Altleft' - 这个单词通常与键盘上的 "Alt" 键左边的部分相对应，也是用于访问特殊功能或菜单。
++ 'Altright' - 这个单词通常与键盘上的 "Alt" 键右边的部分相对应，也是用于访问特殊功能或菜单。
++ 'Apps' - 右键菜单
++ 'Backspace' - 这个单词通常与键盘上的 "Backspace" 键相对应，用于删除前一个字符或命令。
++ 'Browserback' - 这个单词通常与浏览器相关的快捷键相对应，用于返回浏览器的上一个页面。
++ 'Browserfavorites' - 这个单词通常与浏览器相关的快捷键相对应，用于访问浏览器的收藏夹。
++ 'Browserforward' - 这个单词通常与浏览器相关的快捷键相对应，用于前进到浏览器的一个页面。
++ 'Browserhome' - 这个单词通常与浏览器相关的快捷键相对应，用于导航到浏览器的首页。
++ 'Browserrefresh' - 这个单词通常与浏览器相关的快捷键相对应，用于刷新当前页面。
++ 'Browsersearch' - 这个单词通常与浏览器相关的快捷键相对应，用于在浏览器中执行搜索操作。
++ 'Browserstop' - 这个单词通常与浏览器相关的快捷键相对应，用于停止加载当前页面。
++ 'Capslock' - 这个单词通常与键盘上的 "Capslock" 键相对应，用于锁定或解锁大写字母输入。
++ 'Ctrl' - 这个单词通常与键盘上的 "Ctrl" 键相对应，用于执行各种控制命令或组合键操作。
++ 'Ctrlleft' - 这个单词通常与键盘上的 "Ctrl" 键左边的部分相对应，也是用于执行各种控制命令或组合键操作。
++ 'Ctrlright' - 这个单词通常与键盘上的 "Ctrl" 键右边的部分相对应，也是用于执行各种控制命令或组合键操作。
++ 'Decimal' - 这个单词通常与键盘上的 "Decimal" 或 "." 键相对应，用于输入小数点或十进制数字。
++ 'fn' - "fn" 是一个特殊的键盘功能键，通常在笔记本电脑和一些特定的键盘布局中找到。它用于配合其他按键使用，以实现一些特定的功能，如调节亮度、音量等。
++ 'home' - "home" 对应的按键是键盘上的 "Home" 键，通常用于快速导航到页面的顶部或文本的开头。
++ 'insert' - "insert" 对应的按键是键盘上的 "Insert" 键，用于插入文本或数据。
++ 'left', 'right', 'up', 'down' - 这些方向键对应的按键分别是 "Left Arrow"、"Right Arrow"、"Up Arrow" 和 "Down Arrow"。它们通常用于控制光标的位置。
++ 'num0' 到 'num9' - 这些数字键对应的按键是从 "0" 到 "9"。它们用于输入数字和进行数学运算。
++ 'numlock', 'scrolllock', 'select', 'separator', 'tab' - 这些都是特殊的锁定键或其他功能键，通常用于控制光标移动、滚动页面、选择文本等操作。
++ 'space', 'return' - "Space" 键对应的按键是空格键，用于在文本中插入空格。"Return" 键对应的按键是回车键，用于换行或确认输入。
++ 'win', 'winleft', 'winright' - 这些是特定的功能键，通常用于操作系统中的窗口控制和菜单操作。"Win" 键对应的按键通常是 Windows 徽标键（通常是带有 Windows 标志的按键）。"Winleft" 和 "Winright" 是左右 Windows 功能键的称呼，但它们并不对应键盘上的标准按键
+</code></pre><h3 id="热键组合快捷键">热键(组合快捷键) </h3>
+<p>按顺序按下按键,完成后,再按相反的顺序释放按键</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 全选 快捷键 Ctrl+A</span>
+pyautogui<span class="token punctuation">.</span>hotkey<span class="token punctuation">(</span><span class="token string">'ctrl'</span><span class="token punctuation">,</span> <span class="token string">'a'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 可以单独控制按下按键和释放按键</span>
+<span class="token comment"># 上面 全选 快捷键相当于:</span>
+pyautogui<span class="token punctuation">.</span>keyDown<span class="token punctuation">(</span><span class="token string">'ctrl'</span><span class="token punctuation">)</span>  <span class="token comment"># 按下ctrl键</span>
+pyautogui<span class="token punctuation">.</span>press<span class="token punctuation">(</span><span class="token string">'a'</span><span class="token punctuation">)</span>     <span class="token comment"># 按下a键并松开</span>
+pyautogui<span class="token punctuation">.</span>keyUp<span class="token punctuation">(</span><span class="token string">'ctrl'</span><span class="token punctuation">)</span>    <span class="token comment"># 松开ctrl键</span>
+
+<span class="token comment"># 注意:如果大量手工控制按键的按下和松开,程序容易出现按下按键后没有被释放的情况,此时需要手动重新点击按键来释放它</span>
+</code></pre><hr>
+<h2 id="消息框">消息框 </h2>
+<p>用户可以通过这种弹窗类消息框和程序进行交互(输入输出)</p>
+<hr>
+<h3 id="alert">alert() </h3>
+<p>带有 一个 按钮的消息框<br>
+单击按钮后返回 button参数 的值</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>alert<span class="token punctuation">(</span>text<span class="token operator">=</span><span class="token string">'文本内容'</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'标题内容'</span><span class="token punctuation">,</span> button<span class="token operator">=</span><span class="token string">'确定'</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</code></pre><h3 id="confirm">confirm() </h3>
+<p>带有 多个 按钮的消息框。按钮的数量和文本可以单击按钮后返回 被单击按钮的文本</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>confirm<span class="token punctuation">(</span>text<span class="token operator">=</span><span class="token string">'文本内容'</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'标题'</span><span class="token punctuation">,</span> buttons<span class="token operator">=</span><span class="token punctuation">[</span><span class="token string">'确定'</span><span class="token punctuation">,</span> <span class="token string">'取消'</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</code></pre><h3 id="prompt">prompt() </h3>
+<p>带有 文本输入框 的消息框<br>
+点击 OK按钮 返回文本输入框内容,点击 Cancel按钮 返回 None</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>prompt<span class="token punctuation">(</span>text<span class="token operator">=</span><span class="token string">'显示文本'</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">'标题'</span> <span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">'文本框内默认字符'</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</code></pre><h3 id="password">password() </h3>
+<p>带有 密码输入框 的消息框<br>
+和<code>prompt()</code>的区别是,文本框内文本会显示为<code>mask</code>参数的值,不显示文本内容</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code>r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>password<span class="token punctuation">(</span>text<span class="token operator">=</span><span class="token string">"输入密码"</span><span class="token punctuation">,</span> title<span class="token operator">=</span><span class="token string">"PyAutoGUI消息框"</span><span class="token punctuation">,</span> default<span class="token operator">=</span><span class="token string">"默认密码"</span><span class="token punctuation">,</span> mask<span class="token operator">=</span><span class="token string">"*"</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+</code></pre><hr>
+<h2 id="屏幕截图定位">屏幕截图定位 </h2>
+<p>PyAutoGUI 可以截取屏幕截图，将它保存到硬盘上，并在屏幕中定位图像</p>
+<hr>
+<h3 id="屏幕截图">屏幕截图 </h3>
+<p>在 1920 x 1080 的屏幕上，截图功能完成大约需要十分之一秒</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 常用参数</span>
+<span class="token comment">#   imageFilename: str,保存截图文件的路径和图片名</span>
+<span class="token comment">#   region: tuple[int, int, int, int],指定截图区域(默认全屏),</span>
+<span class="token comment">#       截图区域为一个方形,四个参数,(x轴坐标, y轴坐标, 区域宽度, 区域高度)</span>
+pyautogui<span class="token punctuation">.</span>screenshot<span class="token punctuation">(</span><span class="token string">'full_screen.png'</span><span class="token punctuation">)</span>
+pyautogui<span class="token punctuation">.</span>screenshot<span class="token punctuation">(</span><span class="token string">'./image/region.png'</span><span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">500</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">,</span> <span class="token number">400</span><span class="token punctuation">]</span><span class="token punctuation">)</span>  <span class="token comment"># 先创建好image目录</span>
+
+
+</code></pre><h3 id="图像定位">图像定位 </h3>
+<ul>
+<li>如果需要对屏幕对象进行单击/移动等操作,需要先定位它的坐标.</li>
+<li>手动测量对象位置坐标轴,如果图像移动位置程序就失效了.</li>
+<li>如果我们根据对象的截图来自动识别定位它的坐标,程序就更灵活</li>
+</ul>
+<p>在 1920 x 1080 的屏幕上,定位图像完成大约需要 1-2 秒.一般程序可用,但对于高速游戏来说太慢了.</p>
+<p>如果不知道要点击的内容在屏幕上的确切坐标，就不能调用 moveTo() 和 click() 函数。但是，如果有按钮的图像，如下面这个<br>
+图片，那就可以调用 locateOnScreen('图片路径') 函数来获取坐标。返回值是一个元组:(left, top, width, height)。这个元组可以传递给 center() 来获得该区域中心的坐标（X，Y）。如果在屏幕上找不到图像，locateOnScreen() 将引发 ImageNotFoundException 异常。</p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 定位找到的第一张图片,返回(x, y, width, heigh)</span>
+<span class="token comment"># 从左往右,从上往下找</span>
+
+<span class="token comment"># 如果找不到图像将引发 ImageNotFoundException 异常,所以需要异常处理</span>
+<span class="token comment"># 返回匹配到的屏幕坐标和宽高:Box(left=15, top=409, width=46, height=56)</span>
+<span class="token comment"># 参数 confidence 指定匹配精确度,值在0-1之间,默认为1</span>
+<span class="token comment">#   精确度越高,匹配越严格(1差1像素都不行,容易一个都匹配不到)</span>
+<span class="token comment">#   精确度越低,匹配越宽松(稍微像点都行,容易匹配到错误图像)</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    <span class="token comment"># 定位图像</span>
+    r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>locateOnScreen<span class="token punctuation">(</span><span class="token string">'qq.png'</span><span class="token punctuation">,</span> confidence<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    <span class="token comment"># 定位图像的中心点坐标</span>
+    c <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>center<span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">'图像未找到!'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 定位找到的第一张图片,返回图像中心坐标(x, y)</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>locateCenterOnScreen<span class="token punctuation">(</span><span class="token string">'qq.png'</span><span class="token punctuation">,</span> confidence<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">'图像未找到!'</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 定位找到的所有图片,返回所有图片位置数据</span>
+<span class="token comment"># 数据类似:[Box(left=1459, top=308, width=46, height=56), Box(left=15, top=409, width=46, height=56)]</span>
+<span class="token keyword keyword-try">try</span><span class="token punctuation">:</span>
+    r <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span>pyautogui<span class="token punctuation">.</span>locateAllOnScreen<span class="token punctuation">(</span><span class="token string">'qq.png'</span><span class="token punctuation">,</span> confidence<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">)</span><span class="token punctuation">)</span>  <span class="token comment"># 也有region或grayscale参数</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>r<span class="token punctuation">)</span>
+<span class="token keyword keyword-except">except</span><span class="token punctuation">:</span>
+    <span class="token keyword keyword-print">print</span><span class="token punctuation">(</span><span class="token string">'图像未找到!'</span><span class="token punctuation">)</span>
+
+
+<span class="token comment"># 其他参数</span>
+
+<span class="token comment"># 全屏定位很慢(1-2秒),想提高定位速度可以指定 region参数 只在规定区域匹配图像</span>
+r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>locateOnScreen<span class="token punctuation">(</span><span class="token string">'qq.png'</span><span class="token punctuation">,</span> confidence<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">,</span> region<span class="token operator">=</span><span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">200</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">,</span> <span class="token number">300</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment"># 设置参数 grayscale=True 将图像变为灰度图像,可以加快定位速度(大约30%),但可能会导致匹配错误</span>
+r <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>locateOnScreen<span class="token punctuation">(</span><span class="token string">'qq.png'</span><span class="token punctuation">,</span> confidence<span class="token operator">=</span><span class="token number">0.9</span><span class="token punctuation">,</span> grayscale<span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>a<span class="token punctuation">)</span>
+</code></pre><p><strong>获取和对比坐标点像素颜色</strong></p>
+<pre data-role="codeBlock" data-info="python" class="language-python python"><code><span class="token comment"># 获取截图中指定坐标的像素颜色(RGB值,类似(31, 31, 31))</span>
+im <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>screenshot<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>im<span class="token punctuation">.</span>getpixel<span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 获取屏幕指定坐标的颜色</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>pyautogui<span class="token punctuation">.</span>pixel<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+
+<span class="token comment"># 检查屏幕指定坐标点像素颜色是否为指定RGB值</span>
+<span class="token comment"># 参数:x轴坐标,y轴坐标,指定RGB颜色值元组</span>
+color <span class="token operator">=</span> pyautogui<span class="token punctuation">.</span>pixelMatchesColor<span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">,</span> <span class="token number">200</span><span class="token punctuation">,</span> <span class="token punctuation">(</span><span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">,</span> <span class="token number">31</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword keyword-print">print</span><span class="token punctuation">(</span>color<span class="token punctuation">)</span>
+</code></pre><hr>
+
+      </div>
+      
+      
+    
+    
+    
+    
+    
+    
+  
+    </body></html>
